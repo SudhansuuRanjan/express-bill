@@ -5,9 +5,8 @@ import ControlCentre from './ControlCentre';
 import InvoiceReview from './InvoiceReview';
 import { useAppContext } from '../context/AppContext';
 
-const InvoiceForm = () => {
+export default function InvoiceForm (){
     const { formData, setFormData, showReview, setShowReview } = useAppContext();
-
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value })
@@ -96,5 +95,3 @@ const InvoiceForm = () => {
         </div>
     )
 }
-
-export default InvoiceForm;
