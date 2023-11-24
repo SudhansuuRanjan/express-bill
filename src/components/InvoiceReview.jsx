@@ -109,7 +109,7 @@ const InvoiceReview = () => {
                                 <p className='text-gray-400 font-medium'># INV-{buyer.invoiceNumber}</p>
                                 <div className='mt-6'>
                                     <p className='font-semibold'>Total Bill Amount</p>
-                                    <p className='text-2xl font-bold'>₹ {Intl.NumberFormat().format(totalVales.grandTotal)}</p>
+                                    <p className='text-2xl font-bold'>{storeInfo.currency} {Intl.NumberFormat().format(totalVales.grandTotal)}</p>
                                 </div>
                             </div>
                         </div>
@@ -127,11 +127,11 @@ const InvoiceReview = () => {
                             <div className='w-[12rem] text-sm'>
                                 <div className='w-full flex justify-between'>
                                     <p className='font-semibold'>Invoice Date:</p>
-                                    <p className='text-gray-500 font-medium'>{getFormatedDate(buyer.dateOfIssue ? buyer.dateOfIssue : new Date())}</p>
+                                    <p className='text-gray-500 font-medium'>{getFormatedDate(buyer.dateOfIssue ? buyer.dateOfIssue : new Date(), storeInfo.dateFormat)}</p>
                                 </div>
                                 <div className='w-full flex justify-between'>
                                     <p className='font-semibold'>Due Date:</p>
-                                    <p className='text-gray-500 font-medium'>{getFormatedDate(buyer.currentDate)}</p>
+                                    <p className='text-gray-500 font-medium'>{getFormatedDate(buyer.currentDate, storeInfo.dateFormat)}</p>
                                 </div>
                             </div>
                         </div>
@@ -174,23 +174,23 @@ const InvoiceReview = () => {
                             <div className='w-[16rem] flex gap-2 flex-col mt-8'>
                                 <div className='flex justify-between'>
                                     <p className='font-semibold'>Sub Total</p>
-                                    <p className='text-gray-500 font-medium'>₹{new Intl.NumberFormat().format(totalVales.total)}</p>
+                                    <p className='text-gray-500 font-medium'>{storeInfo.currency}{new Intl.NumberFormat().format(totalVales.total)}</p>
                                 </div>
                                 <div className='flex justify-between'>
-                                    <p className='font-semibold'>Discount ({totalVales.discount.type === "percent" ? totalVales.discount.value + "%" : "₹" + totalVales.discount.value})</p>
-                                    <p className='text-gray-500 font-medium'>₹{new Intl.NumberFormat().format(totalVales.discountAmount)}</p>
+                                    <p className='font-semibold'>Discount ({totalVales.discount.type === "percent" ? totalVales.discount.value + "%" : "{storeInfo.currency}" + totalVales.discount.value})</p>
+                                    <p className='text-gray-500 font-medium'>{storeInfo.currency}{new Intl.NumberFormat().format(totalVales.discountAmount)}</p>
                                 </div>
                                 <div className='flex justify-between'>
-                                    <p className='font-semibold'>Tax ({totalVales.tax.type === "percent" ? totalVales.tax.value + "%" : "₹" + totalVales.tax.value})</p>
-                                    <p className='text-gray-500 font-medium'>₹{new Intl.NumberFormat().format(totalVales.taxAmount)}</p>
+                                    <p className='font-semibold'>Tax ({totalVales.tax.type === "percent" ? totalVales.tax.value + "%" : "{storeInfo.currency}" + totalVales.tax.value})</p>
+                                    <p className='text-gray-500 font-medium'>{storeInfo.currency}{new Intl.NumberFormat().format(totalVales.taxAmount)}</p>
                                 </div>
                                 <div className='flex justify-between'>
                                     <p className='font-semibold'>Shipping</p>
-                                    <p className='text-gray-500 font-medium'>₹{new Intl.NumberFormat().format(totalVales.shipping)}</p>
+                                    <p className='text-gray-500 font-medium'>{storeInfo.currency}{new Intl.NumberFormat().format(totalVales.shipping)}</p>
                                 </div>
                                 <div className='flex justify-between'>
                                     <p className='font-semibold'>Total</p>
-                                    <p className='text-gray-500 font-medium'>₹{new Intl.NumberFormat().format(totalVales.grandTotal)}</p>
+                                    <p className='text-gray-500 font-medium'>{storeInfo.currency}{new Intl.NumberFormat().format(totalVales.grandTotal)}</p>
                                 </div>
                             </div>
                         </div>

@@ -29,6 +29,8 @@ const AppProvider = ({ children }) => {
         clientNotes: '',
         showTerms: true,
         showClientNotes: true,
+        currency: '₹',
+        dateFormat: 'DD/MM/YYYY',
     });
     const [showReview, setShowReview] = useState(false);
 

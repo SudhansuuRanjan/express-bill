@@ -118,7 +118,7 @@ const Total = () => {
                 <div className='py-2 w-full'>
                     <div className='flex justify-between font-medium px-1'>
                         <div>Subtotal</div>
-                        <div>₹ {products.reduce((acc, it) => acc + it.total, 0).toFixed(2)}</div>
+                        <div>{storeInfo.currency} {products.reduce((acc, it) => acc + it.total, 0).toFixed(2)}</div>
                     </div>
                     <div className='flex flex-col font-medium gap-0.5 pt-4'>
                         <div className={`w-full flex items-center transition-all ease-in-out justify-between gap-2 ${showBillingPercent.discount ? 'flex' : 'hidden'}`}>
@@ -135,7 +135,7 @@ const Total = () => {
                                 }} className='px-4'><FaRotate /></button>
                                 <div className='relative'>
                                     <input onChange={(e) => handleChange(e, setDiscount, discount)} value={discount.value} type="text" placeholder="0" className={`input input-bordered input-primary w-32 h-9 ${discount.type === "absolute" ? "pl-16" : "pr-16"}`} />
-                                    {discount.type === "absolute" ? <div className='absolute top-1.5 left-2'>₹</div> :
+                                    {discount.type === "absolute" ? <div className='absolute top-1.5 left-2'>{storeInfo.currency}</div> :
                                         <div className='absolute top-1.5 right-2'>%</div>}
                                 </div>
                             </div>
@@ -154,7 +154,7 @@ const Total = () => {
                                 }} className='px-4'><FaRotate /></button>
                                 <div className='relative'>
                                     <input onChange={(e) => handleChange(e, setTax, tax)} value={tax.value} type="text" placeholder="0" className={`input input-bordered input-primary w-32 h-9 ${tax.type === "absolute" ? "pl-16" : "pr-16"}`} />
-                                    {tax.type === "absolute" ? <div className='absolute top-1.5 left-2'>₹</div> :
+                                    {tax.type === "absolute" ? <div className='absolute top-1.5 left-2'>{storeInfo.currency}</div> :
                                         <div className='absolute top-1.5 right-2'>%</div>}
                                 </div>
                             </div>
@@ -175,7 +175,7 @@ const Total = () => {
                     <div className="divider before:bg-gray-500 after:bg-gray-500 my-2"></div>
                     <div className='flex justify-between font-medium'>
                         <div>Total Amount</div>
-                        <div>₹ {getTotalAmount().grandTotal}</div>
+                        <div>{storeInfo.currency} {getTotalAmount().grandTotal}</div>
                     </div>
                 </div>
             </div>
