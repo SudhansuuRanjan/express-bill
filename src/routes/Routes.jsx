@@ -3,7 +3,7 @@ import Contact from "../pages/Contact"
 import Features from "../pages/Features"
 import Upcoming from "../pages/Upcoming"
 import NavBar from "../components/NavBar"
-import InvoiceForm from "../components/InvoiceForm"
+import InvoiceForm from "../components/invoiceForm"
 
 const AppRoutes = () => {
   return (
