@@ -5,7 +5,7 @@ import ControlCentre from './ControlCentre';
 import InvoiceReview from './InvoiceReview';
 import { useAppContext } from '../context/AppContext';
 
-export default function InvoiceForm (){
+export default function InvoiceForm() {
     const { formData, setFormData, showReview, setShowReview } = useAppContext();
 
     const handleChange = (e) => {
