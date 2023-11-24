@@ -65,6 +65,12 @@ const InvoiceReview = () => {
         if (buyer.invoiceNumber.trim() === "") {
             errorMessages.push("Invoice number is required.");
         }
+        if (storeInfo.logo === "") {
+            errorMessages.push("No store logo found.");
+        }
+        if (storeInfo.name.trim() === "" || storeInfo.address.trim() === "" || storeInfo.email.trim() === "" || storeInfo.mobno.trim() === "" || storeInfo.pincode.trim() === "" || storeInfo.city.trim() === "" || storeInfo.state.trim() === "") {
+            errorMessages.push("Please fill the store details.")
+        }
         return errorMessages;
     }
 
@@ -93,7 +99,7 @@ const InvoiceReview = () => {
                     <div id="invoice" className="p-8 text-black bg-white w-[48rem] h-fit rounded-lg">
                         <div className="flex items-center justify-between">
                             <div>
-                                <img src="music.png" alt="logo" height={62} width={62} />
+                                {storeInfo.logo && <img src={storeInfo.logo} alt="logo" height={62} width={62} />}
                                 <div className='mt-3'>
                                     <h1 className="text-base font-bold">{storeInfo.name}</h1>
                                     <div className='text-sm font-medium text-gray-700'>

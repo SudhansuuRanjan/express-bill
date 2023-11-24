@@ -46,8 +46,8 @@ const Products = () => {
 
             <div className='text-lg font-semibold py-5 pb-2'>New Item</div>
 
-            <form onSubmit={handleSubmit} className='w-full flex gap-5'>
-                <div className="flex-1">
+            <form onSubmit={handleSubmit} className='w-full flex lg:flex-nowrap flex-wrap gap-5 gap-y-0'>
+                <div className="flex-1 min-w-[10rem]">
                     <label className="label">
                         <span className="label-text">Item</span>
                     </label>
@@ -74,7 +74,7 @@ const Products = () => {
                         setFormData({ ...formData, price: e.target.value, total: Number(e.target.value) * Number(formData.quantity) })
                     }} required={true} id="price" type="text" placeholder="0"
                         min={0}
-                        className="input input-bordered input-primary w-[6rem] h-10" />
+                        className="input input-bordered input-primary lg:w-[6rem] w-[5rem] h-10" />
                 </div>
 
                 <div>
@@ -83,7 +83,7 @@ const Products = () => {
                     </label>
                     <input value={formData.total} disabled={true} required={true} id="total" type="number" placeholder="0"
                         min={0}
-                        className="input input-bordered input-primary w-[6rem] h-10" />
+                        className="input input-bordered input-primary lg:w-[6rem] w-[5rem] h-10" />
                 </div>
 
                 <div>

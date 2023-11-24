@@ -17,13 +17,27 @@ const Store = () => {
     }, []);
 
     return (
-        <div className='flex gap-2 items-center justify-between p-3'>
+        <div className='flex lg:flex-row flex-col gap-2 items-center justify-between p-3'>
             <div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Store Logo</span>
+                        {storeInfo.logo && <img src={storeInfo.logo} className="w-14 h-14" />}
                     </label>
-                    <input id="logo" type="file" className="file-input
+                    <input onChange={(e) => {
+                        const file = e.target.files[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onloadend = () => {
+                                // Convert the blob to a data URL
+                                const dataUrl = reader.result;
+                                const newValue = { ...storeInfo, logo: dataUrl };
+                                setStoreInfo(newValue);
+                                localStorage.setItem('storeInfo', JSON.stringify(newValue));
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    }} id="logo" type="file" accept='image/*' className="file-input
                             file-input-md file-input-bordered file-input-primary w-[19rem]" />
                 </div>
 
