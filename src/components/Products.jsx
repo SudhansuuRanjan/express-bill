@@ -60,8 +60,8 @@ const Products = () => {
                         <span className="label-text">Qty</span>
                     </label>
                     <input value={formData.quantity} onChange={(e) => {
-                        setFormData({ ...formData, quantity: Number(e.target.value), total: Number(e.target.value) * Number(formData.price) })
-                    }} required={true} id="quantity" type="number" placeholder={0}
+                        setFormData({ ...formData, quantity: parseInt(e.target.value), total: parseInt(e.target.value) * Number(formData.price) })
+                    }} required={true} id="quantity" type="number" placeholder={1}
                         min={1}
                         className="input input-bordered input-primary w-[5rem] h-10" />
                 </div>
@@ -71,7 +71,7 @@ const Products = () => {
                         <span className="label-text">Price</span>
                     </label>
                     <input value={formData.price} onChange={(e) => {
-                        setFormData({ ...formData, price: e.target.value, total: Number(e.target.value) * Number(formData.quantity) })
+                        setFormData({ ...formData, price: parseInt(e.target.value), total: parseInt(e.target.value) * parseInt(formData.quantity) })
                     }} required={true} id="price" type="number" placeholder={0}
                         min={0}
                         className="input input-bordered input-primary lg:w-[6rem] w-[5rem] h-10" />
