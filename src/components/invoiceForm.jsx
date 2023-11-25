@@ -13,7 +13,7 @@ export default function InvoiceForm() {
     }
 
     return (
-        <div className='flex lg:flex-row flex-col-reverse m-auto lg:px-8 px-3 my-8 lg:items-start items-center lg:gap-10 gap-6 justify-center'>
+        <div className='flex lg:flex-row flex-col-reverse m-auto lg:px-8 px-3 mt-4 mb-8 lg:items-start items-center lg:gap-10 gap-6 justify-center'>
             {showReview && <InvoiceReview />}
             <div className='bg-gray-900 lg:p-10 md:p-7 p-5 rounded-lg lg:min-w-[40rem] lg:w-[50rem] md:w-[45rem] w-[95%]'>
                 <div className='flex lg:flex-row flex-col lg:items-center items-start gap-3 justify-between pb-2'>

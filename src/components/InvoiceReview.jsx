@@ -183,11 +183,11 @@ const InvoiceReview = () => {
                                     <p className='text-gray-500 font-medium'>{storeInfo.currency}{new Intl.NumberFormat().format(totalVales.total)}</p>
                                 </div>
                                 <div className='flex justify-between'>
-                                    <p className='font-semibold'>Discount ({totalVales.discount.type === "percent" ? totalVales.discount.value + "%" : "{storeInfo.currency}" + totalVales.discount.value})</p>
+                                    <p className='font-semibold'>Discount ({totalVales.discount.type === "percent" ? totalVales.discount.value + "%" : storeInfo.currency + totalVales.discount.value})</p>
                                     <p className='text-gray-500 font-medium'>{storeInfo.currency}{new Intl.NumberFormat().format(totalVales.discountAmount)}</p>
                                 </div>
                                 <div className='flex justify-between'>
-                                    <p className='font-semibold'>Tax ({totalVales.tax.type === "percent" ? totalVales.tax.value + "%" : "{storeInfo.currency}" + totalVales.tax.value})</p>
+                                    <p className='font-semibold'>Tax ({totalVales.tax.type === "percent" ? totalVales.tax.value + "%" : storeInfo.currency + totalVales.tax.value})</p>
                                     <p className='text-gray-500 font-medium'>{storeInfo.currency}{new Intl.NumberFormat().format(totalVales.taxAmount)}</p>
                                 </div>
                                 <div className='flex justify-between'>

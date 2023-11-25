@@ -61,6 +61,83 @@ const AppProvider = ({ children }) => {
         return { total, discount, tax, shipping, grandTotal: grandTotal ?? 0, discountAmount: applyDiscount, taxAmount: applyTax };
     };
 
+    const getBillJSONData = () => {
+        const { total, discount, tax, shipping, grandTotal, discountAmount, taxAmount } = getTotalAmount();
+        const billData = {
+            "invoiceNumber": formData.invoiceNumber,
+            "dateOfIssue": formData.dateOfIssue,
+            "notes": formData.notes,
+            "buyerName": formData.buyerName,
+            "buyerEmail": formData.buyerEmail,
+            "buyerMobno": formData.buyerMobno,
+            "buyerAddress": formData.buyerAddress,
+            "currentDate": new Date(),
+            "products": products,
+            "storeInfo": storeInfo,
+            "total": total,
+            "discount": discount,
+            "tax": tax,
+            "shipping": shipping,
+            "grandTotal": grandTotal,
+            "discountAmount": discountAmount,
+            "taxAmount": taxAmount,
+        }
+        return billData;
+    }
+
+    const loadInvoiceFromJSON = (invoiceData) => {
+        const {
+            invoiceNumber,
+            dateOfIssue,
+            notes,
+            buyerName,
+            buyerEmail,
+            buyerMobno,
+            buyerAddress,
+            currentDate,
+            products,
+            storeInfo,
+            discount,
+            tax
+        } = invoiceData;
+        setFormData({
+            currentDate,
+            invoiceNumber,
+            dateOfIssue,
+            notes,
+            buyerName,
+            buyerEmail,
+            buyerMobno,
+            buyerAddress,
+        })
+        setProducts(products)
+        setStoreInfo({
+            ...storeInfo,
+            name: storeInfo.name,
+            address: storeInfo.address,
+            logo: storeInfo.logo,
+            email: storeInfo.email,
+            mobno: storeInfo.mobno,
+            pincode: storeInfo.pincode,
+            city: storeInfo.city,
+            state: storeInfo.state,
+            terms: storeInfo.terms,
+            clientNotes: storeInfo.clientNotes,
+            showTerms: storeInfo.showTerms,
+            showClientNotes: storeInfo.showClientNotes,
+            currency: storeInfo.currency,
+            dateFormat: storeInfo.dateFormat,
+        })
+        setDiscount({
+            type: discount.type,
+            value: discount.value,
+        })
+        setTax({
+            type: tax.type,
+            value: tax.value,
+        })
+    }
+
     return (
         <AppContext.Provider value={{
             formData,
@@ -80,6 +157,8 @@ const AppProvider = ({ children }) => {
             shipping,
             setShipping,
             getTotalAmount,
+            getBillJSONData,
+            loadInvoiceFromJSON
         }}>
             {children}
         </AppContext.Provider>

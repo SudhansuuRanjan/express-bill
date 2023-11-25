@@ -9,10 +9,11 @@ const AppRoutes = () => {
   return (
     <Router>
       <NavBar />
+      {/* <Alert /> */}
       <div className='flex items-center justify-center relative pt-20'>
         <div className='artboard min-h-[90vh]'>
           <Routes>
-            <Route path="/" element={<InvoiceForm/>} />
+            <Route path="/" element={<InvoiceForm />} />
             <Route path="/features" element={<Features />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/upcoming" element={<Upcoming />} />

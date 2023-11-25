@@ -52,7 +52,7 @@ const Products = () => {
                         <span className="label-text">Item</span>
                     </label>
                     <input value={formData.name} onChange={handleChange} required={true} id="name" type="text" placeholder="Name" className="input input-bordered input-primary w-full h-10" />
-                    <textarea onChange={handleChange} id="description" className="textarea textarea-primary w-full mt-3" placeholder="Description"></textarea>
+                    <textarea onChange={handleChange} value={formData.description} id="description" className="textarea textarea-primary w-full mt-3" placeholder="Description"></textarea>
                 </div>
 
                 <div className="">
@@ -61,18 +61,18 @@ const Products = () => {
                     </label>
                     <input value={formData.quantity} onChange={(e) => {
                         setFormData({ ...formData, quantity: Number(e.target.value), total: Number(e.target.value) * Number(formData.quantity) })
-                    }} required={true} id="quantity" type="number" placeholder="0"
+                    }} required={true} id="quantity" type="number" placeholder={0}
                         min={1}
                         className="input input-bordered input-primary w-[5rem] h-10" />
                 </div>
 
-                <div className="">
+                <div>
                     <label className="label">
                         <span className="label-text">Price</span>
                     </label>
                     <input value={formData.price} onChange={(e) => {
                         setFormData({ ...formData, price: e.target.value, total: Number(e.target.value) * Number(formData.quantity) })
-                    }} required={true} id="price" type="text" placeholder="0"
+                    }} required={true} id="price" type="number" placeholder={0}
                         min={0}
                         className="input input-bordered input-primary lg:w-[6rem] w-[5rem] h-10" />
                 </div>
