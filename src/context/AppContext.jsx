@@ -81,6 +81,7 @@ const AppProvider = ({ children }) => {
             "grandTotal": grandTotal,
             "discountAmount": discountAmount,
             "taxAmount": taxAmount,
+            "showBillingPercent": showBillingPercent,
         }
         return billData;
     }
@@ -98,7 +99,8 @@ const AppProvider = ({ children }) => {
             products,
             storeInfo,
             discount,
-            tax
+            tax,
+            showBillingPercent
         } = invoiceData;
         setFormData({
             currentDate,
@@ -128,14 +130,54 @@ const AppProvider = ({ children }) => {
             currency: storeInfo.currency,
             dateFormat: storeInfo.dateFormat,
         })
+        setDiscount(discount);
+        setTax(tax);
+        setShowBillingPercent(showBillingPercent);
+    }
+
+    const resetAll = () => {
+        setFormData({
+            currentDate: Date.now(),
+            invoiceNumber: '',
+            dateOfIssue: "",
+            notes: '',
+            buyerName: "",
+            buyerEmail: "",
+            buyerMobno: "",
+            buyerAddress: "",
+        });
+        setProducts([]);
+        setStoreInfo({
+            name: '',
+            address: '',
+            logo: '',
+            email: '',
+            mobno: '',
+            pincode: '',
+            city: '',
+            state: '',
+            terms: '',
+            clientNotes: '',
+            showTerms: true,
+            showClientNotes: true,
+            currency: '₹',
+            dateFormat: 'DD/MM/YYYY',
+        });
+        setShowReview(false);
+        setShowBillingPercent({
+            discount: false,
+            tax: false,
+            shipping: false,
+        });
         setDiscount({
-            type: discount.type,
-            value: discount.value,
+            type: 'percent',
+            value: "0"
         })
         setTax({
-            type: tax.type,
-            value: tax.value,
+            type: "percent",
+            value: "0"
         })
+        setShipping("0");
     }
 
     return (
@@ -158,7 +200,8 @@ const AppProvider = ({ children }) => {
             setShipping,
             getTotalAmount,
             getBillJSONData,
-            loadInvoiceFromJSON
+            loadInvoiceFromJSON,
+            resetAll
         }}>
             {children}
         </AppContext.Provider>

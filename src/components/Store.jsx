@@ -17,12 +17,12 @@ const Store = () => {
     }, []);
 
     return (
-        <div className='flex lg:flex-row flex-col gap-2 items-center justify-between p-3'>
-            <div>
+        <div className='flex lg:flex-row flex-col gap-2 items-end lg:justify-between justify-center p-3'>
+            <div className='w-full flex flex-col justify-center items-center'>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Store Logo</span>
-                        {storeInfo.logo && <img src={storeInfo.logo} className="w-14 h-14" />}
+                        {storeInfo.logo && <img src={storeInfo.logo} className="w-auto h-14" />}
                     </label>
                     <input onChange={(e) => {
                         const file = e.target.files[0];
@@ -38,57 +38,57 @@ const Store = () => {
                             reader.readAsDataURL(file);
                         }
                     }} id="logo" type="file" accept='image/*' className="file-input
-                            file-input-md file-input-bordered file-input-primary w-[19rem]" />
+                            file-input-md file-input-bordered file-input-primary lg:w-[18rem] w-[95%]" />
                 </div>
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Store Name</span>
                     </label>
-                    <input value={storeInfo.name} id="name" onChange={handleStoreChange} type="text" placeholder="Type here" className="input input-bordered input-primary w-[19rem]" />
+                    <input value={storeInfo.name} id="name" onChange={handleStoreChange} type="text" placeholder="Type here" className="input input-bordered input-primary lg:w-[18rem] w-[95%]" />
                 </div>
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Address</span>
                     </label>
-                    <input value={storeInfo.address} id="address" type="text" onChange={handleStoreChange} placeholder="Type here" className="input input-bordered input-primary w-[19rem]" />
+                    <input value={storeInfo.address} id="address" type="text" onChange={handleStoreChange} placeholder="Type here" className="input input-bordered input-primary lg:w-[18rem] w-[95%]" />
                 </div>
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Pin Code</span>
                     </label>
-                    <input value={storeInfo.pincode} id="pincode" onChange={handleStoreChange} type="text" placeholder="Type here" className="input input-bordered input-primary w-[19rem]" />
+                    <input value={storeInfo.pincode} id="pincode" onChange={handleStoreChange} type="text" placeholder="Type here" className="input input-bordered input-primary lg:w-[18rem] w-[95%]" />
                 </div>
             </div>
-            <div>
+            <div className='w-full flex flex-col justify-center items-center'>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Email Id</span>
                     </label>
-                    <input value={storeInfo.email} id="email" onChange={handleStoreChange} type="text" placeholder="Type here" className="input input-bordered input-primary w-[19rem]" />
+                    <input value={storeInfo.email} id="email" onChange={handleStoreChange} type="text" placeholder="Type here" className="input input-bordered input-primary lg:w-[18rem] w-[95%]" />
                 </div>
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Mob No.</span>
                     </label>
-                    <input value={storeInfo.mobno} id="mobno" onChange={handleStoreChange} type="text" placeholder="Type here" className="input input-bordered input-primary w-[19rem]" />
+                    <input value={storeInfo.mobno} id="mobno" onChange={handleStoreChange} type="text" placeholder="Type here" className="input input-bordered input-primary lg:w-[18rem] w-[95%]" />
                 </div>
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">City</span>
                     </label>
-                    <input value={storeInfo.city} id="city" onChange={handleStoreChange} type="text" placeholder="Type here" className="input input-bordered input-primary w-[19rem]" />
+                    <input value={storeInfo.city} id="city" onChange={handleStoreChange} type="text" placeholder="Type here" className="input input-bordered input-primary lg:w-[18rem] w-[95%]" />
                 </div>
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">State</span>
                     </label>
-                    <input value={storeInfo.state} id="state" onChange={handleStoreChange} type="text" placeholder="Type here" className="input input-bordered input-primary w-[19rem]" />
+                    <input value={storeInfo.state} id="state" onChange={handleStoreChange} type="text" placeholder="Type here" className="input input-bordered input-primary lg:w-[18rem] w-[95%]" />
                 </div>
             </div>
         </div>

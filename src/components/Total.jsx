@@ -38,7 +38,7 @@ const Total = () => {
 
     return (
         <div className="flex lg:flex-row flex-col gap-8 w-full">
-            <div className="flex flex-1 flex-col gap-5 lg:w-fit w-full min-w-[21rem]">
+            <div className="flex flex-1 flex-col gap-5 lg:w-[42%] w-full">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Notes</span>
@@ -54,7 +54,7 @@ const Total = () => {
                         }}
                         value={storeInfo.clientNotes}
                         placeholder="Visit again."
-                        className="textarea textarea-bordered textarea-lg w-full"
+                        className="textarea textarea-bordered textarea-md w-full"
                     ></textarea>
                 </div>
                 <div className="form-control">
@@ -72,11 +72,11 @@ const Total = () => {
                         }}
                         value={storeInfo.terms}
                         placeholder="By using this.."
-                        className="textarea textarea-bordered textarea-lg w-full"
+                        className="textarea textarea-bordered textarea-md w-full"
                     ></textarea>
                 </div>
             </div>
-            <div className='flex flex-col lg:w-[21rem] w-full'>
+            <div className='flex flex-col lg:w-[47%] w-full'>
                 <div className="flex justify-between">
                     <div className="form-control w-32">
                         <label className="cursor-pointer label flex flex-col items-center justify-center gap-3">

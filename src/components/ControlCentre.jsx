@@ -5,13 +5,8 @@ import { useAppContext } from '../context/AppContext';
 import { formatTime, getFormatedDate } from '../utils';
 
 const ControlCentre = () => {
-    const { storeInfo, setStoreInfo, setShowReview, getBillJSONData, loadInvoiceFromJSON } = useAppContext();
+    const { storeInfo, setStoreInfo, setShowReview, getBillJSONData, loadInvoiceFromJSON, resetAll } = useAppContext();
     const [invoices, setInvoices] = useState([]);
-
-    const handleRefresh = () => {
-        window.location.reload();
-    };
-
     const currenciesWithSymbol = [
         { symbol: '₹', code: 'INR' },
         { symbol: '€', code: 'EUR' },
@@ -88,10 +83,13 @@ const ControlCentre = () => {
 
     return (
         <div className="flex w-full flex-col items-center justify-center gap-4 pb-5">
-            <button onClick={handleRefresh} className="btn btn-primary btn-lg btn-outline w-full">
+            <button onClick={resetAll} className="btn btn-primary btn-lg btn-outline w-full">
                 + New Invoice
             </button>
-            <button onClick={saveInvoice} className="btn btn-primary btn-warning btn-lg w-full">
+            <button onClick={()=>{
+                saveInvoice();
+                resetAll();
+            }} className="btn btn-primary btn-warning btn-lg w-full">
                 <FaSave /> Save Invoice
             </button>
             <div className="flex w-full justify-between">
@@ -140,7 +138,10 @@ const ControlCentre = () => {
                 <div className='flex items-center justify-between gap-2 flex-col w-full mt-4'>
                     {
                         invoices.length === 0 ? <div className='text-gray-500 text-sm font-medium px-2'>No saved invoices.</div> : invoices.map((invoice, index) => (
-                            <div onClick={() => loadInvoiceFromJSON(invoice)} key={index} className="flex w-full items-center justify-between gap-2 rounded-lg bg-neutral p-2 px-3 cursor-pointer">
+                            <div onClick={() => {
+                                loadInvoiceFromJSON(invoice);
+                                deleteSavedInvoice(invoice.id);
+                            }} key={index} className="flex w-full items-center justify-between gap-2 rounded-lg bg-neutral hover:bg-neutral-700 p-2 px-3 cursor-pointer">
                                 <div className="flex items-center justify-between w-full gap-1">
                                     <span className="label-text">#{invoice.id}</span>
                                     <div className='flex gap-2'>

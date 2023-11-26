@@ -102,22 +102,28 @@ const Products = () => {
 export default Products;
 
 const Product = ({ product, handleDelete }) => {
+    const { products, setProducts } = useAppContext();
+
+    const handleChange = (e) => {
+        let val = e.target.id === "quantity" || e.target.id === "price" ? parseInt(e.target.value) : e.target.value;
+        setProducts(products.map((it) => it.id === product.id ? { ...it, [e.target.id]: val } : it));
+    }
 
     return (
-        <div className='w-full flex gap-5'>
-            <div className="flex-1">
+        <div className='w-full flex lg:flex-nowrap flex-wrap gap-5 gap-y-0'>
+            <div className="flex-1 min-w-[10rem]">
                 <label className="label">
                     <span className="label-text">Item</span>
                 </label>
-                <input readOnly={true} value={product.name} type="text" placeholder="Name" className="input input-bordered w-full h-10" />
-                <textarea readOnly={true} value={product.description} className="textarea textarea-bordered w-full mt-3" placeholder="Description"></textarea>
+                <input id="name" onChange={handleChange} value={product.name} type="text" placeholder="Name" className="input input-bordered w-full h-10" />
+                <textarea id="description" onChange={handleChange} value={product.description} className="textarea textarea-bordered w-full mt-3" placeholder="Description"></textarea>
             </div>
 
             <div className="">
                 <label className="label">
                     <span className="label-text">Qty</span>
                 </label>
-                <input readOnly={true} value={product.quantity} type="number" placeholder="0"
+                <input id="quantity" onChange={handleChange} value={product.quantity} type="number" placeholder="0"
                     min={1}
                     className="input input-bordered w-[5rem] h-10" />
             </div>
@@ -126,7 +132,7 @@ const Product = ({ product, handleDelete }) => {
                 <label className="label">
                     <span className="label-text">Price</span>
                 </label>
-                <input readOnly={true} value={product.price} type="number" placeholder="0"
+                <input id="price" onChange={handleChange} value={product.price} type="number" placeholder="0"
                     min={0}
                     className="input input-bordered w-[6rem] h-10" />
             </div>
@@ -148,7 +154,6 @@ const Product = ({ product, handleDelete }) => {
                     <FaTrash />
                 </button>
             </div>
-
         </div>
     )
 }
